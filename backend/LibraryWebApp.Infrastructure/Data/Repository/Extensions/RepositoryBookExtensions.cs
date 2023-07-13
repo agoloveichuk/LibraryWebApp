@@ -9,7 +9,7 @@ using System.Linq.Dynamic.Core;
 
 namespace LibraryWebApp.Infrastructure.Data.Repository.Extensions
 {
-    public static class RepositoryEmployeeExtensions
+    public static class RepositoryBookExtensions
     {
         public static IQueryable<Book> FilterBooks(this IQueryable<Book> books, decimal minRating, decimal maxRating)
             => books.Where(b => (b.Rating >= minRating && b.Rating <= maxRating));

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace LibraryWebApp.Domain.Entities.Exceptions
 {
-    public sealed class MaxAgeRangeBadRequestException : BadRequestException
+    public sealed class MaxRatingRangeBadRequestException : BadRequestException
     {
-        public MaxAgeRangeBadRequestException() : base("Max age can't be less than min age.")
+        public MaxRatingRangeBadRequestException() : base("Max rating can't be less than min rating.")
         {
         }
     }
