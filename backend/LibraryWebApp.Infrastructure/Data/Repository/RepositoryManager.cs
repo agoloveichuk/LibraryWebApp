@@ -17,8 +17,7 @@ namespace LibraryWebApp.Infrastructure.Data.Repository
         public RepositoryManager(AppDbContext dbContext)
         {
             _dbContext = dbContext;
-            _authorRepository = new Lazy<IAuthorRepository>(() => new
-                AuthorRepository(dbContext));
+            _authorRepository = new Lazy<IAuthorRepository>(() => new AuthorRepository(dbContext));
             _bookRepository = new Lazy<IBookRepository>(() => new BookRepository(dbContext));
             _reviewRepository = new Lazy<IReviewRepository>(() => new ReviewRepository(dbContext));
         }

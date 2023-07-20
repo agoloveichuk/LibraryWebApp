@@ -12,8 +12,7 @@ namespace LibraryWebApp.Infrastructure.Data.Repository
     public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {
         protected AppDbContext AppDbContext;
-        public RepositoryBase(AppDbContext dbContext) 
-            => AppDbContext = dbContext;
+        protected RepositoryBase(AppDbContext dbContext) => AppDbContext = dbContext;
 
         public IQueryable<T> FindAll(bool trackChanges) =>
             !trackChanges ?
