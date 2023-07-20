@@ -1,11 +1,13 @@
 ﻿using AspNetCoreRateLimit;
 using LibraryWebApp.Application.Services;
+using LibraryWebApp.Domain.Entities.Models;
 using LibraryWebApp.Domain.Interfaces.Repository;
 using LibraryWebApp.Domain.Interfaces.Services;
 using LibraryWebApp.Infrastructure.Data;
 using LibraryWebApp.Infrastructure.Data.Repository;
 using LibraryWebApp.Infrastructure.Services;
 using Marvin.Cache.Headers;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace LibraryWebApp.API.Extensions
@@ -75,6 +77,21 @@ namespace LibraryWebApp.API.Extensions
             services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
             services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
             services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
+        }
+
+        public static void ConfigureIdentity(this IServiceCollection services)
+        {
+            var builder = services.AddIdentity<User, IdentityRole>(o =>
+            {
+                o.Password.RequireDigit = true;
+                o.Password.RequireLowercase = false;
+                o.Password.RequireUppercase = false;
+                o.Password.RequireNonAlphanumeric = false;
+                o.Password.RequiredLength = 10;
+                o.User.RequireUniqueEmail = true;
+            })
+            .AddEntityFrameworkStores<AppDbContext>()
+            .AddDefaultTokenProviders();
         }
     }
 }

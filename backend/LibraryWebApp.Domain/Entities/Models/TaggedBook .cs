@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LibraryWebApp.Domain.Entities.Models
 {
-    public class TaggedBok
+    public class TaggedBook
     {
         [Column("AuthorId")]
         public Guid Id { get; set; }

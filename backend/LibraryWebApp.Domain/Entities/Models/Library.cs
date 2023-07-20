@@ -11,10 +11,10 @@ namespace LibraryWebApp.Domain.Entities.Models
     {
         [Column("LibraryId")]
         public Guid Id { get; set; }
-        public ICollection<TaggedBok>? BooksTag { get; set; }
+        public ICollection<TaggedBook>? TaggedBooks { get; set; }
 
         [ForeignKey(nameof(User))]
-        public Guid UserId { get; set; }
+        public string? UserId { get; set; }
 
         public User? User { get; set; }
     }
