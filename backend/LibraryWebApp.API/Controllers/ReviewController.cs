@@ -63,6 +63,7 @@ namespace LibraryWebApp.API.Controllers
         {
             if (patchDoc is null)
                 return BadRequest("patchDoc object sent from client is null.");
+
             var result = await _service.ReviewService.GetReviewForPatchAsync(authorId, bookId, id, autTrackChanges: false, bookTrackChanges: false, revTrackChanges: true);
             patchDoc.ApplyTo(result.reviewToPatch, ModelState);
 
