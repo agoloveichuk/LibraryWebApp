@@ -22,7 +22,7 @@ namespace LibraryWebApp.API.Extensions
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     .WithExposedHeaders("X-Pagination"));
-    });
+            });
 
         public static void ConfigureIISIntegration(this IServiceCollection servicces) =>
             servicces.Configure<IISOptions>(options =>
@@ -69,7 +69,8 @@ namespace LibraryWebApp.API.Extensions
                 }
             };
 
-            services.Configure<IpRateLimitOptions>(opt => {
+            services.Configure<IpRateLimitOptions>(opt =>
+            {
                 opt.GeneralRules = rateLimitRules;
             });
 

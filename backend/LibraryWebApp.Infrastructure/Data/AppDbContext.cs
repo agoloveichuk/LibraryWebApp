@@ -2,12 +2,6 @@
 using LibraryWebApp.Infrastructure.Data.Repository.Configuration;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace LibraryWebApp.Infrastructure.Data
 {
@@ -22,6 +16,7 @@ namespace LibraryWebApp.Infrastructure.Data
         {
             base.OnModelCreating(builder);
 
+            builder.ApplyConfiguration(new RoleConfiguration());
             builder.ApplyConfiguration(new AuthorConfiguration());
             builder.ApplyConfiguration(new BookConfiguration());
             builder.ApplyConfiguration(new ReviewConfiguration());

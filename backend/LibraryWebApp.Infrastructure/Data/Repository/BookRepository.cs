@@ -3,11 +3,6 @@ using LibraryWebApp.Domain.Interfaces.Repository;
 using LibraryWebApp.Domain.RequestFeatures;
 using LibraryWebApp.Infrastructure.Data.Repository.Extensions;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibraryWebApp.Infrastructure.Data.Repository
 {
@@ -28,7 +23,7 @@ namespace LibraryWebApp.Infrastructure.Data.Repository
 
             return PagedList<Book>.ToPagedList(books, bookParameters.PageNumber, bookParameters.PageSize);
         }
-            
+
         public async Task<Book> GetBookAsync(Guid authorId, Guid id, bool trackChanges) =>
             await FindByCondition(b => b.AuthorId.Equals(authorId) && b.Id.Equals(id), trackChanges)
             .SingleOrDefaultAsync();

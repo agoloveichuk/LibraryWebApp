@@ -2,12 +2,10 @@
 using LibraryWebApp.API.ModelBinders;
 using LibraryWebApp.Domain.Entities.DataTransferObjects.Creations;
 using LibraryWebApp.Domain.Entities.DataTransferObjects.Updating;
-using LibraryWebApp.Domain.Entities.Models;
 using LibraryWebApp.Domain.Interfaces.Services;
 using LibraryWebApp.Domain.RequestFeatures;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text.Json;
 
 namespace LibraryWebApp.API.Controllers
@@ -61,7 +59,7 @@ namespace LibraryWebApp.API.Controllers
         }
 
         [HttpDelete("{id:guid}")]
-        public async Task<IActionResult> DeleteAuthor(Guid id) 
+        public async Task<IActionResult> DeleteAuthor(Guid id)
         {
             await _service.AuthorService.DeleteAuthorAsync(id, trackChanges: false);
 

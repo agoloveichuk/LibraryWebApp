@@ -1,10 +1,5 @@
 ﻿using LibraryWebApp.Domain.Entities.Models;
 using LibraryWebApp.Infrastructure.Data.Repository.Extensions.Utility;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Linq.Dynamic.Core;
 
 namespace LibraryWebApp.Infrastructure.Data.Repository.Extensions

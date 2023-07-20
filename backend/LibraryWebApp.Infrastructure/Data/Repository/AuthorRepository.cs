@@ -2,13 +2,6 @@
 using LibraryWebApp.Domain.Interfaces.Repository;
 using LibraryWebApp.Domain.RequestFeatures;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
-using static System.Reflection.Metadata.BlobBuilder;
 
 namespace LibraryWebApp.Infrastructure.Data.Repository
 {
@@ -27,7 +20,7 @@ namespace LibraryWebApp.Infrastructure.Data.Repository
 
             return PagedList<Author>.ToPagedList(authors, authorParameters.PageNumber, authorParameters.PageSize);
         }
-            
+
 
         public async Task<Author> GetAuthorAsync(Guid authorId, bool trackChanges) =>
             await FindByCondition(a => a.Id.Equals(authorId), trackChanges)

@@ -7,11 +7,6 @@ using LibraryWebApp.Domain.Entities.Models;
 using LibraryWebApp.Domain.Interfaces.Repository;
 using LibraryWebApp.Domain.Interfaces.Services;
 using LibraryWebApp.Domain.RequestFeatures;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibraryWebApp.Application.Services
 {
@@ -50,7 +45,7 @@ namespace LibraryWebApp.Application.Services
                 throw new IdParametersBadRequestException();
 
             var authors = await _repository.Author.GetAuthorsByIdsAsync(authorsIds, trackChanges);
-            if (authorsIds.Count() !=  authors.Count())
+            if (authorsIds.Count() != authors.Count())
                 throw new CollectionByIdsBadRequestException();
 
             var authorsDto = _mapper.Map<IEnumerable<AuthorDto>>(authors);
@@ -85,7 +80,7 @@ namespace LibraryWebApp.Application.Services
             var authorsToReturn = _mapper.Map<IEnumerable<AuthorDto>>(authorsEntities);
             var authorsIds = string.Join(",", authorsToReturn.Select(c => c.Id));
 
-            return (authors: authorsToReturn, authorsIds : authorsIds);
+            return (authors: authorsToReturn, authorsIds: authorsIds);
         }
 
         public async Task DeleteAuthorAsync(Guid authorId, bool trackChanges)

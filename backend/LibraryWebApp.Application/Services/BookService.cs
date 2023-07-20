@@ -7,12 +7,6 @@ using LibraryWebApp.Domain.Entities.Models;
 using LibraryWebApp.Domain.Interfaces.Repository;
 using LibraryWebApp.Domain.Interfaces.Services;
 using LibraryWebApp.Domain.RequestFeatures;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibraryWebApp.Application.Services
 {
@@ -40,7 +34,7 @@ namespace LibraryWebApp.Application.Services
             return (books: booksDto, metaData: books.MetaData);
         }
 
-        public async Task<BookDto> GetBookAsync(Guid authorId, Guid bookId, bool trackChanges) 
+        public async Task<BookDto> GetBookAsync(Guid authorId, Guid bookId, bool trackChanges)
         {
             await CheckIfAuthorExist(authorId, trackChanges);
             var book = await GetBookAndCheckIfItExist(authorId, bookId, trackChanges);

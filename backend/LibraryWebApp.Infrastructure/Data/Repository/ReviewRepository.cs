@@ -2,11 +2,6 @@
 using LibraryWebApp.Domain.Interfaces.Repository;
 using LibraryWebApp.Domain.RequestFeatures;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibraryWebApp.Infrastructure.Data.Repository
 {
@@ -25,7 +20,7 @@ namespace LibraryWebApp.Infrastructure.Data.Repository
 
             return PagedList<Review>.ToPagedList(reviews, reviewParameters.PageNumber, reviewParameters.PageSize);
         }
-            
+
 
         public async Task<Review> GetReviewAsync(Guid bookId, Guid id, bool trackChanges) =>
             await FindByCondition(r => r.BookId.Equals(bookId) && r.Id.Equals(id), trackChanges)

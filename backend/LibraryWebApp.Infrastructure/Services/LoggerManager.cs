@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LibraryWebApp.Domain.Interfaces.Services;
+﻿using LibraryWebApp.Domain.Interfaces.Services;
 using NLog;
 
 namespace LibraryWebApp.Infrastructure.Services

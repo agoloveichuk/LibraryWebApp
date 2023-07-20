@@ -1,11 +1,6 @@
 ﻿using LibraryWebApp.Domain.Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibraryWebApp.Infrastructure.Data.Repository.Configuration
 {
@@ -17,7 +12,7 @@ namespace LibraryWebApp.Infrastructure.Data.Repository.Configuration
             (
                 new Review
                 {
-                    Id =  new Guid("00000000-0000-0000-0000-000000000001"),
+                    Id = new Guid("00000000-0000-0000-0000-000000000001"),
                     Message = "This book was amazing!",
                     Reviewer = "John Doe",
                     Score = 9.5m,

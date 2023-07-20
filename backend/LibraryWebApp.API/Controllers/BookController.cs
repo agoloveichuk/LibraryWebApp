@@ -1,12 +1,10 @@
 ﻿using LibraryWebApp.API.ActionFilters;
 using LibraryWebApp.Domain.Entities.DataTransferObjects.Creations;
 using LibraryWebApp.Domain.Entities.DataTransferObjects.Updating;
-using LibraryWebApp.Domain.Entities.Models;
 using LibraryWebApp.Domain.Interfaces.Services;
 using LibraryWebApp.Domain.RequestFeatures;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text.Json;
 
 namespace LibraryWebApp.API.Controllers
@@ -28,7 +26,7 @@ namespace LibraryWebApp.API.Controllers
         }
 
         [HttpGet("{id:guid}", Name = "GetBookForAuthor")]
-        public async Task<IActionResult> GetBook(Guid authorId, Guid id) 
+        public async Task<IActionResult> GetBook(Guid authorId, Guid id)
         {
             var book = await _service.BookService.GetBookAsync(authorId, id, trackChanges: false);
             return Ok(book);
