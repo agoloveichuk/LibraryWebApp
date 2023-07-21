@@ -3,16 +3,9 @@ import { ApiService } from '../../../shared/api.service';
 import { Author } from '../../../shared/models/author.model';
 
 @Component({
-  selector: 'app-author-list',
-  template: `
-    <h2>Authors List</h2>
-    <button (click)="onFetchAuthors()">Fetch Authors</button>
-    <ul>
-      <li *ngFor="let author of authors">
-        {{ author.name }} (ID: {{ author.id }}) - Date of Birth: {{ author.dateOfBirth | date }}
-      </li>
-    </ul>
-  `
+    selector: 'app-author-list',
+    templateUrl: './author-list.component.html',
+    styleUrls: ['./author-list.component.scss']
 })
 export class AuthorListComponent {
   authors: Author[] = [];

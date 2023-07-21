@@ -1,5 +1,3 @@
-<!-- header.component.html -->
-
 <header class="header">
     <div class="header__container">
         <!-- Left corner: Logo and Brand Name -->
@@ -19,7 +17,7 @@
         <!-- Right corner: Register and Login Links -->
         <div class="header__right">
             <a href="/register" class="header__auth">Register</a>
-            <a href="/login" class="header__auth">Login</a>
+            <a class="header__auth" (click)="openLoginDialog()">Login</a>
         </div>
     </div>
 </header>

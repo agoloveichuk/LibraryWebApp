@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>Login</h2>
+<mat-dialog-content>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" formControlName="username" />
+      <div class="error-message" *ngIf="loginForm.get('username')?.errors?.['required']">
+        Username is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" formControlName="password" />
+      <div class="error-message" *ngIf="loginForm.get('password')?.errors?.['required']">
+        Password is required.
+      </div>
+    </div>
+    <div class="error-message" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid" (click)="onSubmit()">Login</button>
+</mat-dialog-actions>
