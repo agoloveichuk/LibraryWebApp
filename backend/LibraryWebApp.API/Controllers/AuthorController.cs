@@ -19,7 +19,6 @@ namespace LibraryWebApp.API.Controllers
         public AuthorController(IServiceManager service) => _service = service;
 
         [HttpGet]
-        [Authorize]
         public async Task<IActionResult> GetAuthors([FromQuery] AuthorParameters authorParameters)
         {
             var pagedResult = await _service.AuthorService.GetAuthorsAsync(authorParameters, trackChanges: false);
