@@ -4,6 +4,7 @@ using LibraryWebApp.Domain.Entities.DataTransferObjects.Creations;
 using LibraryWebApp.Domain.Entities.DataTransferObjects.Updating;
 using LibraryWebApp.Domain.Interfaces.Services;
 using LibraryWebApp.Domain.RequestFeatures;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
@@ -18,6 +19,7 @@ namespace LibraryWebApp.API.Controllers
         public AuthorController(IServiceManager service) => _service = service;
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAuthors([FromQuery] AuthorParameters authorParameters)
         {
             var pagedResult = await _service.AuthorService.GetAuthorsAsync(authorParameters, trackChanges: false);
