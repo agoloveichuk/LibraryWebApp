@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { LoginFormComponent } from './components/auth/login-form/login-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RegisterFormComponent } from './components/auth/register-form/register-form.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     AuthorListComponent,
     LoginFormComponent,
+    RegisterFormComponent,
   ],
   imports: [
     BrowserModule,

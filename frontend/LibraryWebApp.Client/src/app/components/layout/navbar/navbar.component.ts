@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { MatDialog } from '@angular/material/dialog';
 import { LoginFormComponent } from '../../auth/login-form/login-form.component';
+import { RegisterFormComponent } from "../../auth/register-form/register-form.component";
 
 @Component({
     selector: 'app-navbar',
@@ -20,4 +21,14 @@ export class NavbarComponent {
         // Handle any actions after the dialog is closed (if needed)
         });
     }
+
+    openRegisterDialog(): void {
+        const dialogRef = this.dialog.open(RegisterFormComponent, {
+          width: '400px', // Adjust the width as needed
+        });
+    
+        dialogRef.afterClosed().subscribe(result => {
+          // Handle any actions after the dialog is closed (if needed)
+        });
+      }
 }
