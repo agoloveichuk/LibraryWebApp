@@ -1,54 +1,77 @@
-.navbar {
-    background-color: #f8f8f8;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    height: 100px;
-  
-    &__container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-  
-    &__logo img {
-      width: 100px;
-      height: auto;
-    }
-  
-    &__links {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-  
-      li {
-        margin-right: 20px;
-  
-        a {
-          text-decoration: none;
-          color: #333;
-          transition: color 0.2s;
-  
-          &:hover {
-            color: #007bff;
-          }
-        }
-      }
-    }
-  
-    &__auth {
-      button {
-        margin-left: 10px;
-      }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 16px;
+}
+
+.header__container {
+  max-width: 1200px; /* Adjust the max-width value as needed */
+  width: 100%;
+  margin: 0 auto;
+  display: flex; /* Add this line to place children in a row */
+  justify-content: space-between; /* Add this line to space children evenly */
+}
+
+.header__left,
+.header__middle {
+  display: flex;
+  align-items: center;
+}
+
+.header__right {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Pushes the section to the right */
+}
+
+.header__middle {
+  margin-left: 150px; /* Adjust the value as needed */
+}
+
+.header__brand {
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit; /* Use "inherit" to maintain the parent element's text color */
+}
+
+.header__nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+
+  li {
+    margin-right: 16px; /* Adjust the spacing between navigation links */
+  }
+
+  a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+
+    &:hover {
+      color: #555;
     }
   }
-  
+}
+
+.header__right {
+  display: flex;
+  align-items: center;
+}
+
+.header__auth {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 16px; /* Adjust the spacing between Register/Login links */
+
+  &:hover {
+    color: #555;
+  }
+}
