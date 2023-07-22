@@ -12,6 +12,8 @@ namespace LibraryWebApp.Domain.Entities.Models
         [Required(ErrorMessage = "LastName name is a required field.")]
         [MaxLength(120, ErrorMessage = "Maximum length for the LastName is 60 characters.")]
         public string? LastName { get; set; }
+        public string? RefreshToken { get; set; }
+        public DateTime RefreshTokenExpiryTime { get; set; }
 
     }
 }

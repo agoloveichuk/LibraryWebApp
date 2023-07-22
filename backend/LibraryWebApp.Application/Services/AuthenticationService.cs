@@ -4,6 +4,7 @@ using LibraryWebApp.Domain.Entities.Models;
 using LibraryWebApp.Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -60,10 +61,7 @@ namespace LibraryWebApp.Application.Services
         }
         private async Task<List<Claim>> GetClaims()
         {
-            var claims = new List<Claim>
- {
- new Claim(ClaimTypes.Name, _user.UserName)
- };
+            var claims = new List<Claim> { new Claim(ClaimTypes.Name, _user.UserName) };
             var roles = await _userManager.GetRolesAsync(_user);
             foreach (var role in roles)
             {
@@ -72,5 +70,18 @@ namespace LibraryWebApp.Application.Services
             return claims;
         }
 
+        private JwtSecurityToken GenerateTokenOptions(SigningCredentials signingCredentials, List<Claim> claims)
+        {
+            var jwtSettings = _configuration.GetSection("JwtSettings");
+            var tokenOptions = new JwtSecurityToken
+            (
+                issuer: jwtSettings["validIssuer"],
+                audience: jwtSettings["validAudience"],
+                claims: claims,
+                expires: DateTime.Now.AddMinutes(Convert.ToDouble(jwtSettings["expires"])),
+                signingCredentials: signingCredentials
+            );
+            return tokenOptions;
+        }
     }
 }
