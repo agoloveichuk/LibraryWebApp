@@ -29,7 +29,7 @@ export class RegisterFormComponent implements OnInit {
       userName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
-      roles: [[]] // Default roles (if applicable)
+      roles: [[]]
     });
   }
 
@@ -39,12 +39,11 @@ export class RegisterFormComponent implements OnInit {
 
       this.authService.register(user).subscribe(
         response => {
-          // Handle successful registration here (e.g., show success message, redirect, etc.)
           console.log('Registration successful!', response);
           this.dialogRef.close();
         },
         error => {
-          this.errorMessage = error.message; // Display the error message to the user
+          this.errorMessage = error.message;
         }
       );
     }

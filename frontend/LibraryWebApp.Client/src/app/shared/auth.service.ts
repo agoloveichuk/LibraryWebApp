@@ -8,7 +8,6 @@ import { UserForAuthentication } from './models/user-for-authentication.model';
 interface LoginResponse {
   accessToken: string;
   refreshToken: string;
-  // Other properties if any, such as userId, role, etc.
 }
 
 @Injectable({
@@ -29,8 +28,8 @@ export class AuthService {
         const accessToken = response.accessToken;
         const refreshToken = response.refreshToken;
 
-        localStorage.setItem('accessToken', accessToken); // Store access token with a separate key
-        localStorage.setItem('refreshToken', refreshToken); // Store refresh token with a separate key
+        localStorage.setItem('accessToken', accessToken);
+        localStorage.setItem('refreshToken', refreshToken);
       })
     );
   }
@@ -43,6 +42,4 @@ export class AuthService {
   public isLoggedIn(): boolean {
     return !!localStorage.getItem('accessToken');
   }
-
-  // Add other authentication-related methods here if needed
 }

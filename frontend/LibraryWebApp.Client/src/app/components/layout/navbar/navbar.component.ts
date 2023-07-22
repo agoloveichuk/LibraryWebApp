@@ -18,28 +18,25 @@ export class NavbarComponent {
 
     openLoginDialog(): void {
         const dialogRef = this.dialog.open(LoginFormComponent, {
-        width: '400px', // Adjust the width as needed
+        width: '400px',
         });
 
         dialogRef.afterClosed().subscribe(result => {
-        // Handle any actions after the dialog is closed (if needed)
+
         });
     }
 
     openRegisterDialog(): void {
         const dialogRef = this.dialog.open(RegisterFormComponent, {
-          width: '400px', // Adjust the width as needed
+          width: '400px',
         });
     
         dialogRef.afterClosed().subscribe(result => {
-          // Handle any actions after the dialog is closed (if needed)
+
         });
     }
 
     public getUserName(): string | null {
-      // Retrieve the username from the token or any other user information you have stored
-      // For simplicity, I'm assuming you stored the username in the JWT payload.
-      // Replace 'username' with the actual property name from your JWT payload.
       const token = localStorage.getItem('accessToken');
       if (token) {
         const payload = JSON.parse(atob(token.split('.')[1]));

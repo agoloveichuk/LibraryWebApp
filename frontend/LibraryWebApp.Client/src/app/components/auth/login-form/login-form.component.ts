@@ -38,12 +38,11 @@ export class LoginFormComponent implements OnInit {
 
       this.authService.login(userForAuth).subscribe(
         response => {
-          // Handle successful login here (e.g., store token, redirect, etc.)
           console.log('Login successful!', response);
           this.dialogRef.close();
         },
         error => {
-          this.errorMessage = error.message; // Display the error message to the user
+          this.errorMessage = error.message;
         }
       );
     }

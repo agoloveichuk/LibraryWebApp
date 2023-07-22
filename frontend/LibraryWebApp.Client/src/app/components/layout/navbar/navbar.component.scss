@@ -7,11 +7,11 @@
 }
 
 .header__container {
-  max-width: 1200px; /* Adjust the max-width value as needed */
+  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  display: flex; /* Add this line to place children in a row */
-  justify-content: space-between; /* Add this line to space children evenly */
+  display: flex;
+  justify-content: space-between;
 }
 
 .header__left,
@@ -23,18 +23,18 @@
 .header__right {
   display: flex;
   align-items: center;
-  margin-left: auto; /* Pushes the section to the right */
+  margin-left: auto;
 }
 
 .header__middle {
-  margin-left: 150px; /* Adjust the value as needed */
+  margin-left: 150px;
 }
 
 .header__brand {
   font-size: 24px;
   font-weight: bold;
   text-decoration: none;
-  color: inherit; /* Use "inherit" to maintain the parent element's text color */
+  color: inherit;
 }
 
 .header__nav {
@@ -44,7 +44,7 @@
   display: flex;
 
   li {
-    margin-right: 16px; /* Adjust the spacing between navigation links */
+    margin-right: 16px;
   }
 
   a {
@@ -69,7 +69,7 @@
   color: #333;
   font-size: 16px;
   font-weight: bold;
-  margin-left: 16px; /* Adjust the spacing between Register/Login links */
+  margin-left: 16px;
   cursor: pointer;
 
   &:hover {

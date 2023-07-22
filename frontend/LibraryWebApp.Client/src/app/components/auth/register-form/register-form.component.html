@@ -2,9 +2,6 @@
     <h2 mat-dialog-title>Register</h2>
     <mat-dialog-content>
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-        <!-- Add form fields for first name, last name, username, email, password, etc. -->
-        <!-- Use Angular Material form elements like mat-form-field, mat-input, mat-error, etc. -->
-        <!-- For example: -->
         <div class="form-group">
           <mat-form-field appearance="fill">
             <mat-label>First Name</mat-label>
@@ -14,7 +11,6 @@
             First name is required.
           </mat-error>
         </div>
-        <!-- ... other form fields ... -->
       </form>
     </mat-dialog-content>
     <mat-dialog-actions>
