@@ -10,11 +10,6 @@ namespace LibraryWebApp.API.ActionFilters
 
         }
 
-        public void OnActionExecuted(ActionExecutedContext context)
-        {
-
-        }
-
         public void OnActionExecuting(ActionExecutingContext context)
         {
             var action = context.RouteData.Values["action"];
@@ -31,6 +26,11 @@ namespace LibraryWebApp.API.ActionFilters
 
             if (!context.ModelState.IsValid)
                 context.Result = new UnprocessableEntityObjectResult(context.ModelState);
+        }
+
+        public void OnActionExecuted(ActionExecutedContext context)
+        {
+            // Method intentionally left empty.
         }
     }
 }
