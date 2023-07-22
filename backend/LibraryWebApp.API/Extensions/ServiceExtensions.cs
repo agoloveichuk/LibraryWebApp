@@ -67,7 +67,7 @@ namespace LibraryWebApp.API.Extensions
                 new RateLimitRule
                 {
                     Endpoint = "*",
-                    Limit = 3,
+                    Limit = 50,
                     Period = "5m"
                 }
             };
@@ -101,7 +101,7 @@ namespace LibraryWebApp.API.Extensions
         public static void ConfigureJWT(this IServiceCollection services, IConfiguration configuration)
         {
             var jwtSettings = configuration.GetSection("JwtSettings");
-            var secretKey = "LibraryWebAppAPISecretKey"; // CHANGE, NOT SECURE 
+            var secretKey = "sBJl3g32eA8ioLhle1R9hD3sJnG4VN+FQJQfFF/eIzU="; // CHANGE, NOT SECURE 
             services.AddAuthentication(opt =>
             {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

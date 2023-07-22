@@ -16,8 +16,17 @@
         
         <!-- Right corner: Register and Login Links -->
         <div class="header__right">
-            <a class="header__auth" (click)="openRegisterDialog()">Register</a>
-            <a class="header__auth" (click)="openLoginDialog()">Login</a>
-        </div>
+            <!-- Show user information and Logout link when the user is logged in -->
+            <ng-container *ngIf="isLoggedIn(); else showLoginAndRegister">
+              <a class="header__auth" (click)="openRegisterDialog()">Hello {{ getUserName() }}</a>
+              <a class="header__auth" (click)="onLogout()">Logout</a>
+            </ng-container>
+            
+            <!-- Show Register and Login links when the user is not logged in -->
+            <ng-template #showLoginAndRegister>
+              <a class="header__auth" (click)="openRegisterDialog()">Register</a>
+              <a class="header__auth" (click)="openLoginDialog()">Login</a>
+            </ng-template>
+          </div>
     </div>
 </header>

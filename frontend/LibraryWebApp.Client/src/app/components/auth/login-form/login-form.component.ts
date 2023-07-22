@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from '../../../shared/auth.service';
+import { UserForAuthentication } from 'src/app/shared/models/user-for-authentication.model';
 
 @Component({
   selector: 'app-login-form',
@@ -33,8 +34,9 @@ export class LoginFormComponent implements OnInit {
     if (this.loginForm.valid) {
       const username = this.loginForm.get('username')?.value;
       const password = this.loginForm.get('password')?.value;
+      const userForAuth: UserForAuthentication = { username, password };
 
-      this.authService.login(username, password).subscribe(
+      this.authService.login(userForAuth).subscribe(
         response => {
           // Handle successful login here (e.g., store token, redirect, etc.)
           console.log('Login successful!', response);

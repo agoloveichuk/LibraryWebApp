@@ -6,7 +6,5 @@ using System.Threading.Tasks;
 
 namespace LibraryWebApp.Domain.Entities.DataTransferObjects
 {
-    internal class TokenDto
-    {
-    }
+    public record TokenDto(string AccessToken, string RefreshToken);
 }

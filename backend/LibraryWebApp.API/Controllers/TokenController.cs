@@ -1,12 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LibraryWebApp.API.ActionFilters;
+using LibraryWebApp.Domain.Entities.DataTransferObjects;
+using LibraryWebApp.Domain.Interfaces.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryWebApp.API.Controllers
 {
-    public class TokenController : Controller
+    [Route("api/token")]
+    [ApiController]
+    public class TokenController : ControllerBase
     {
-        public IActionResult Index()
+        private readonly IServiceManager _service;
+        public TokenController(IServiceManager service) => _service = service;
+
+        [HttpPost("refresh")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        public async Task<IActionResult> Refresh([FromBody] TokenDto tokenDto)
         {
-            return View();
+            var tokenDtoToReturn = await _service.AuthenticationService.RefreshToken(tokenDto);
+
+            return Ok(tokenDtoToReturn);
         }
     }
 }

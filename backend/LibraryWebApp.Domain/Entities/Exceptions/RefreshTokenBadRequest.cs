@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace LibraryWebApp.Domain.Entities.Exceptions
 {
-    internal class RefreshTokenBadRequest
+    public sealed class RefreshTokenBadRequest : BadRequestException
     {
+        public RefreshTokenBadRequest() : base("Invalid client request. The tokenDto has some invalid values.")
+        {
+        }
     }
+
 }
