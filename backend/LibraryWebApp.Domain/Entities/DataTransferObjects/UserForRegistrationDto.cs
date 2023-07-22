@@ -5,14 +5,6 @@ namespace LibraryWebApp.Domain.Entities.DataTransferObjects
 {
     public record UserForRegistrationDto
     {
-        [Required(ErrorMessage = "First name is a required field.")]
-        [MaxLength(120, ErrorMessage = "Maximum length for the first name is 120 characters.")]
-        public string? FirstName { get; init; }
-
-        [Required(ErrorMessage = "Last name is a required field.")]
-        [MaxLength(120, ErrorMessage = "Maximum length for the last name is 120 characters.")]
-        public string? LastName { get; init; }
-
         [Required(ErrorMessage = "Username is required.")]
         [MaxLength(100, ErrorMessage = "Maximum length for the username is 100 characters.")]
         public string? UserName { get; init; }

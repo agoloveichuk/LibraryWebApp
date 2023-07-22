@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from '../../../shared/auth.service';
 
@@ -24,17 +24,33 @@ export class RegisterFormComponent implements OnInit {
 
   initForm(): void {
     this.registerForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
       userName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
+      repeatPassword: ['', Validators.required],
       roles: [[]]
+    }, {
+      validators: this.passwordMatchValidator
     });
   }
 
+  passwordMatchValidator = (formGroup: FormGroup): ValidationErrors | null => {
+    const password = formGroup.get('password')?.value;
+    const repeatPassword = formGroup.get('repeatPassword')?.value;
+  
+    return password === repeatPassword ? null : { passwordMismatch: true };
+  };
+
   onSubmit(): void {
     if (this.registerForm.valid) {
+      const password = this.registerForm.get('password')?.value;
+      const repeatPassword = this.registerForm.get('repeatPassword')?.value;
+  
+      if (password !== repeatPassword) {
+        this.errorMessage = 'Passwords do not match.';
+        return;
+      }
+
       const user = this.registerForm.value;
 
       this.authService.register(user).subscribe(

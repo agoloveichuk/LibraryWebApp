@@ -6,11 +6,6 @@ import { UserForAuthentication } from './models/user-for-authentication.model';
 import { UserForRegistration } from './models/user-for-registration.model';
 import { Token } from './models/token.model';
 
-interface LoginResponse {
-  accessToken: string;
-  refreshToken: string;
-}
-
 @Injectable({
   providedIn: 'root',
 })
@@ -21,12 +16,29 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   public register(user: UserForRegistration): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, user);
+    return this.http.post<any>(`${this.apiUrl}/authentication`, user).pipe(
+      tap(() => {
+        // After successful registration, automatically log in the user
+        const userForAuth: UserForAuthentication = {
+          username: user.userName, // Use the username from the registration form
+          password: user.password, // Use the password from the registration form
+        };
+
+        this.login(userForAuth).subscribe(
+          () => {
+            console.log('Automatic login successful after registration');
+          },
+          (error) => {
+            console.error('Automatic login failed after registration', error);
+          }
+        );
+      })
+    );
   }
 
   public login(userForAuth: UserForAuthentication): Observable<any> {
-    return this.http.post<LoginResponse>(`${this.apiUrl}/authentication/login`, userForAuth).pipe(
-      tap((response : LoginResponse) => {
+    return this.http.post<Token>(`${this.apiUrl}/authentication/login`, userForAuth).pipe(
+      tap((response : Token) => {
         const accessToken = response.accessToken;
         const refreshToken = response.refreshToken;
 
@@ -54,12 +66,12 @@ export class AuthService {
 
     return this.http.post<Token>(`${this.apiUrl}/api/token/refresh`, { refreshToken }).pipe(
       tap((response: Token) => {
-        localStorage.setItem(this.userTokenKey, response.accessToken); // Store the new access token
+        localStorage.setItem(this.userTokenKey, response.accessToken);
       }),
       catchError((error) => {
         // Failed to refresh the token or no refresh token available, log the user out
         this.logout();
-        return throwError('Authentication failed');
+        return throwError(() => new Error('Authentication failed'))
       })
     );
   }
